@@ -13,15 +13,17 @@ function Transection() {
   const [inputdata, setInputData] = useState();
   const [lodding, setLodding] = useState(false);
   const [currentpage, setCurrentpage] = useState(1);
-  
+
   const toggleClick = () => {
     setSidebarToggle(!sidebarToggle);
   };
-  
+
+  const URL = "https://norta-dashboard.onrender.com";
+
   useEffect(() => {
     const PaymentData = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/api/payments");
+        const response = await axios.get(`${URL}/api/payments`);
         const { data } = response;
         setPayments(data.items || []);
         setPaymentdata(data.items || []);
@@ -112,7 +114,7 @@ function Transection() {
   const handleRefresh = () => {
     setInputData("");
     setPaymentdata(payments);
-    setCurrentpage(1); 
+    setCurrentpage(1);
   };
   return (
     <>

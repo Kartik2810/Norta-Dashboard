@@ -8,15 +8,16 @@ function Login() {
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
+  const URL = "https://norta-dashboard.onrender.com";
+
   const HandleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post('login', { email, password });
+      const res = await axios.post(`${URL}/api/login`, { email, password });
       const { data } = res;
       localStorage.setItem("user", JSON.stringify(data));
       toast.success("Logged in successfully", { autoClose: 2000 });
       navigate("/customers");
-      
     } catch (error) {
       toast.error("Invalid email or password");
       console.log(`error in handleSubmit ${error}`);
@@ -36,11 +37,7 @@ function Login() {
           <p className="mb-10 text-center">
             Welcome back! Please enter your details.
           </p>
-          <form
-            onSubmit={HandleSubmit}
-            
-            className="space-y-4 sm:mb-8 mb-"
-          >
+          <form onSubmit={HandleSubmit} className="space-y-4 sm:mb-8 mb-">
             <div className="flex flex-col mb-5">
               <label htmlFor="email" className="pb-1">
                 Email
@@ -67,7 +64,7 @@ function Login() {
                 className="border border-gray-300 p-2 mb-10 rounded"
               />
             </div>
-           
+
             <button
               type="submit"
               className="bg-[#08A19E] w-full text-white p-2 rounded-lg "

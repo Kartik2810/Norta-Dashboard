@@ -48,11 +48,13 @@ function Customers() {
     setInputdata(e.target.value);
   };
 
+  const URL = "https://norta-dashboard.onrender.com";
+
   //fetch data
   useEffect(() => {
     const fetchPayments = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/api/payments");
+        const response = await axios.get(`${URL}/api/payments`);
         setLodding(true);
         setTimeout(() => {
           setLodding(false);
