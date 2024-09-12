@@ -1,0 +1,30 @@
+{
+  "name": "norta-2024-dashboard",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "client": "npm start --prefix my-app",
+    "dev": "concurrently \"npm start\" \"npm run client\""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "axios": "^1.7.4",
+    "bcrypt": "^5.1.1",
+    "body-parser": "^1.20.2",
+    "concurrently": "^8.2.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "mongoose": "^8.5.3",
+    "node-fetch": "^3.3.2",
+    "nodemon": "^3.1.4",
+    "razorpay": "^2.9.4",
+    "react-csv": "^2.2.2",
+    "react-toastify": "^10.0.5",
+    "woocommerce-api": "^1.5.0"
+  }
+}
