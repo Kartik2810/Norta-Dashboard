@@ -1,5 +1,5 @@
-const mongoose = require("mongoose")
-const {Schema}  = mongoose;
+const mongoose = require("mongoose");
+const { Schema } = mongoose;
 
 const userDataSchema = new Schema({
   id: String,
@@ -7,7 +7,8 @@ const userDataSchema = new Schema({
   email: String,
   status: String,
   order_id: String,
+  ticket_Status: { type: String, default: "Panding" },
 });
-const Payments = mongoose.model("payment",userDataSchema);
+const Payments = mongoose.model("payment", userDataSchema);
 
 module.exports = Payments;

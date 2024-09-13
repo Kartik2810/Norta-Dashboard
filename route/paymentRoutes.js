@@ -1,7 +1,10 @@
 const express = require("express");
-const PaymentData = require("../controller/paymentController");
+const {
+  PaymentData,
+  updateTicketStatus,
+} = require("../controller/paymentController");
 const router = express.Router();
 
-
-router.get("/payments",PaymentData);
-module.exports =router
+router.get("/payments", PaymentData);
+router.post("/payments/status", updateTicketStatus);
+module.exports = router;

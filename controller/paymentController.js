@@ -21,7 +21,12 @@ const PaymentData = async (req, res) => {
 
     for (let paymentData of payments) {
       try {
-        const payment = new Payments(paymentData);
+        const existingPayment = await Payments.findOne({ id: paymentData.id });
+
+        const payment = new Payments({
+          ...paymentData,
+          ticket_status: "pendind",
+        });
         await payment.save();
       } catch (err) {
         console.error("Error saving payment:", err);
@@ -34,4 +39,26 @@ const PaymentData = async (req, res) => {
     res.status(500).json({ error: error.message });
   }
 };
-module.exports = PaymentData;
+
+const updateTicketStatus = async (req, res) => {
+  const { id, newStatus } = req.body;
+
+  try {
+    const payment = await Payments.findOneAndUpdate(
+      { id: id },
+      { ticket_status: newStatus },
+      { new: true }
+    );
+
+    if (!payment) {
+      return res.status(404).json({ error: "Payment not found" });
+    }
+
+    res.json(payment);
+  } catch (error) {
+    console.error("Error updating ticket status backend:", error);
+    res.status(500).json({ error: error.message });
+  }
+};
+
+module.exports = { PaymentData, updateTicketStatus };

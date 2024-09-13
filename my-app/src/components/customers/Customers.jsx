@@ -158,22 +158,30 @@ function Customers() {
 
   const customerPercentage = useMemo(() => {
     return totlecustomer > 0 ? (totleCustomers / totlecustomer) * 100 : 0;
-  });
+  }, []);
 
   const handleTicketStatusClick = (payment) => {
     setSelectedPayment(payment);
   };
-  const handleSaveStatus = (newStatus) => {
+
+  const handleSaveStatus = async (newStatus) => {
     const updatedPayments = payments.map((payment) =>
       payment.id === selectedPayment.id
-        ? { ...payment, statuus: newStatus }
+        ? { ...payment, ticket_status: newStatus }
         : payment
     );
 
     setPayments(updatedPayments);
     setFilteredPayments(updatedPayments);
-
-    localStorage.setItem("payments", JSON.stringify(updatedPayments));
+    try {
+      await axios.post(`${URL}/api/payments/status`, {
+        id: selectedPayment.id,
+        newStatus: newStatus,
+      });
+      localStorage.setItem("payments", JSON.stringify(updatedPayments));
+    } catch (error) {
+      console.error("Error updating ticket status frontend", error);
+    }
 
     setSelectedPayment(null);
   };
@@ -498,6 +506,7 @@ function Customers() {
                   onSave={handleSaveStatus}
                 />
               )}
+
               {/* pagination */}
               <div className=" flex justify-between items-center   mt-4">
                 <button
