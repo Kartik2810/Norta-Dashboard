@@ -22,7 +22,7 @@ function Customers() {
   const [lodding, setLodding] = useState(false);
   const [selectedPayment, setSelectedPayment] = useState(null);
 
-  console.log(filteredPayments)
+  console.log(filteredPayments);
   // for download exel file
   const headers = [
     { label: "Customer name", key: "notes.name" },
@@ -49,11 +49,12 @@ function Customers() {
     setInputdata(e.target.value);
   };
 
+  const URL = "https://norta-dashboard.onrender.com";
   //fetch data
   useEffect(() => {
     const fetchPayments = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/api/payments");
+        const response = await axios.get(`${URL}/api/payments`);
         setLodding(true);
         setTimeout(() => {
           setLodding(false);
@@ -159,8 +160,6 @@ function Customers() {
     return totlecustomer > 0 ? (totleCustomers / totlecustomer) * 100 : 0;
   });
 
-
-  
   const handleTicketStatusClick = (payment) => {
     setSelectedPayment(payment);
   };
@@ -454,7 +453,7 @@ function Customers() {
                                   <div className="border m-1 border-gray-300 rounded-lg">
                                     <div className="flex p-5 justify-between ">
                                       <div>
-                                      <h2 className="text-start text-sm mb-1 text-[#B5B7C0]">
+                                        <h2 className="text-start text-sm mb-1 text-[#B5B7C0]">
                                           Email Id:{" "}
                                           <span className="text-black text-xs">
                                             {tdata.notes.email}
