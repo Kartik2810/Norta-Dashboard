@@ -22,6 +22,7 @@ function Customers() {
   const [lodding, setLodding] = useState(false);
   const [selectedPayment, setSelectedPayment] = useState(null);
 
+  console.log(filteredPayments)
   // for download exel file
   const headers = [
     { label: "Customer name", key: "notes.name" },
@@ -48,13 +49,11 @@ function Customers() {
     setInputdata(e.target.value);
   };
 
-  const URL = "https://norta-dashboard.onrender.com";
-
   //fetch data
   useEffect(() => {
     const fetchPayments = async () => {
       try {
-        const response = await axios.get(`${URL}/api/payments`);
+        const response = await axios.get("http://localhost:5000/api/payments");
         setLodding(true);
         setTimeout(() => {
           setLodding(false);
@@ -158,30 +157,24 @@ function Customers() {
 
   const customerPercentage = useMemo(() => {
     return totlecustomer > 0 ? (totleCustomers / totlecustomer) * 100 : 0;
-  }, []);
+  });
 
+
+  
   const handleTicketStatusClick = (payment) => {
     setSelectedPayment(payment);
   };
-
-  const handleSaveStatus = async (newStatus) => {
+  const handleSaveStatus = (newStatus) => {
     const updatedPayments = payments.map((payment) =>
       payment.id === selectedPayment.id
-        ? { ...payment, ticket_status: newStatus }
+        ? { ...payment, statuus: newStatus }
         : payment
     );
 
     setPayments(updatedPayments);
     setFilteredPayments(updatedPayments);
-    try {
-      await axios.post(`${URL}/api/payments/status`, {
-        id: selectedPayment.id,
-        newStatus: newStatus,
-      });
-      localStorage.setItem("payments", JSON.stringify(updatedPayments));
-    } catch (error) {
-      console.error("Error updating ticket status frontend", error);
-    }
+
+    localStorage.setItem("payments", JSON.stringify(updatedPayments));
 
     setSelectedPayment(null);
   };
@@ -369,7 +362,7 @@ function Customers() {
                       <th>Sr no</th>
                       <th>Customer name</th>
                       <th>Phone number</th>
-                      <th>Email</th>
+                      {/* <th>Email</th> */}
                       <th>Atanded Date</th>
                       <th>No. of tickets</th>
                       <th>Ticket price</th>
@@ -426,16 +419,24 @@ function Customers() {
                               <td>{serialNumber}</td>
                               <td>{tdata.notes.name}</td>
                               <td>{tdata.notes.phone}</td>
-                              <td>{tdata.notes.email}</td>
+                              {/* <td>{tdata.notes.email}</td> */}
                               <td>{tdata.notes.date}</td>
                               <td>{tdata.notes.confirm_no_of_ticket}</td>
-                              <td>{(totalQut / 100).toFixed(2)}</td>
-                              <td>{(tdata.amount / 100).toFixed(2)}</td>
+                              <td>₹ {(totalQut / 100).toFixed(2)}</td>
+                              <td>₹ {(tdata.amount / 100).toFixed(2)}</td>
                               <td>
                                 <button>{ticketName()}</button>
                               </td>
-                              <td>
-                                <button>{tdata.status}</button>
+                              <td className="py-4 px-6">
+                                <span
+                                  className={`px-2 py-1 rounded-full ${
+                                    tdata.status === "captured"
+                                      ? "bg-green-200 text-green-800"
+                                      : "bg-red-200 text-red-800"
+                                  }`}
+                                >
+                                  {tdata.status}
+                                </span>
                               </td>
                               <td>
                                 <button
@@ -453,6 +454,12 @@ function Customers() {
                                   <div className="border m-1 border-gray-300 rounded-lg">
                                     <div className="flex p-5 justify-between ">
                                       <div>
+                                      <h2 className="text-start text-sm mb-1 text-[#B5B7C0]">
+                                          Email Id:{" "}
+                                          <span className="text-black text-xs">
+                                            {tdata.notes.email}
+                                          </span>{" "}
+                                        </h2>
                                         <h2 className="text-start text-sm mb-1 text-[#B5B7C0]">
                                           Order Id:{" "}
                                           <span className="text-black text-xs">
@@ -506,7 +513,6 @@ function Customers() {
                   onSave={handleSaveStatus}
                 />
               )}
-
               {/* pagination */}
               <div className=" flex justify-between items-center   mt-4">
                 <button

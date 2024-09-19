@@ -18,12 +18,10 @@ function Transection() {
     setSidebarToggle(!sidebarToggle);
   };
 
-  const URL = "https://norta-dashboard.onrender.com";
-
   useEffect(() => {
     const PaymentData = async () => {
       try {
-        const response = await axios.get(`${URL}/api/payments`);
+        const response = await axios.get("http://localhost:5000/api/payments");
         const { data } = response;
         setPayments(data.items || []);
         setPaymentdata(data.items || []);
@@ -278,8 +276,18 @@ function Transection() {
                               <td>{tdata.notes.name}</td>
                               <td>{tdata.notes.confirm_no_of_ticket}</td>
                               <td>{transectionType()}</td>
-                              <td>{tdata.amount / 100}</td>
-                              <td>{tdata.status}</td>
+                              <td>₹ {tdata.amount / 100}</td>
+                              <td className="py-4 px-6">
+                                <span
+                                  className={`px-2 py-1 rounded-full ${
+                                    tdata.status === "captured"
+                                      ? "bg-green-200 text-green-800"
+                                      : "bg-red-200 text-red-800"
+                                  }`}
+                                >
+                                  {tdata.status}
+                                </span>
+                              </td>
                             </tr>
                           </React.Fragment>
                         );
