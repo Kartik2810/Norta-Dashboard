@@ -9,7 +9,7 @@ const RAZORPAY_API_SECRET = process.env.API_SECRET;
 const PaymentData = async (req, res) => {
   try {
     const response = await axios.get(
-      "https://api.razorpay.com/v1/payments?count=40",
+      "https://api.razorpay.com/v1/payments?count=35",
       {
         auth: {
           username: RAZORPAY_API_KEY,
