@@ -18,12 +18,10 @@ function Transection() {
     setSidebarToggle(!sidebarToggle);
   };
 
-  const URL = "https://norta-dashboard.onrender.com";
-
   useEffect(() => {
     const PaymentData = async () => {
       try {
-        const response = await axios.get(`${URL}/api/payments`);
+        const response = await axios.get("http://localhost:5000/api/payments");
         const { data } = response;
         setPayments(data.items || []);
         setPaymentdata(data.items || []);
@@ -122,16 +120,16 @@ function Transection() {
         {sidebarToggle ? <div className="w-[320px] nirav"></div> : null}
         <Sidebar toggleClick={toggleClick} sidebarToggle={sidebarToggle} />
         <div className="w-[100%] ">
-          <div className=" w-[90%]  m-auto mt-16  pl-2">
+          <div className="2xl:w-[90%] w-[95%]  m-auto 2xl:mt-16 mt-10  pl-2">
             <div className="sm:flex sm:justify-between sm:items-center">
-              <h1 className="font-medium text-2xl">Hello SMJ 👋🏼</h1>
-              <div className="bg-white flex items-center gap-2 py-1 px-2 border rounded-xl max-sm:mt-3">
+              <h1 className="font-medium 2xl:text-2xl text-xl">Hello SMJ 👋🏼</h1>
+              <div className="bg-white flex items-center gap-2 2xl:py-1 py-[0.18rem] 2xl:px-2 px-1 border rounded-xl  max-sm:mt-3">
                 <i
                   className="fa-solid fa-magnifying-glass text-gray-400"
                   aria-hidden="true"
                 ></i>
                 <input
-                  className="py-1 px-2 border-none outline-none focus:ring-2 focus:ring-[#069ea1] rounded-md"
+                  className="2xl:py-1 py-[0.18rem] px-2 border-none outline-none focus:ring-2 focus:ring-[#069ea1] rounded-md"
                   type="text"
                   placeholder="Search"
                   aria-label="Search"
@@ -140,11 +138,11 @@ function Transection() {
             </div>
 
             {/* section-2 */}
-            <div className="border mt-10 rounded-[30px] px-14 py-8  bg-white">
+            <div className="border 2xl:mt-10 mt-7 2xl:rounded-[30px] rounded-[20px] px-14 py-8  bg-white shadow-sm">
               <div className="grid md:grid-cols-3">
                 <div className=" flex gap-5 mx-2 md:items-center max-md:my-5">
                   <img
-                    className="max-lg:w-[70px] max-lg:h-[70px]"
+                    className="max-2xl:w-[60px] max-2xl:h-[60px]"
                     src={group10}
                     alt="double-human"
                   />
@@ -152,7 +150,7 @@ function Transection() {
                     <h5 className="text-sm font-normal text-gray-500">
                       Successful transaction
                     </h5>
-                    <h1 className="font-semibold text-3xl my-1">
+                    <h1 className="font-semibold 2xl:text-3xl text-2xl my-1">
                       {successfulTransaction}
                     </h1>
                     <span className="text-xs font-medium">
@@ -166,7 +164,7 @@ function Transection() {
                 </div>
                 <div className="flex gap-5 md:justify-center mx-2  md:border-l-2 md:border-r-2 items-center  max-md:my-5">
                   <img
-                    className="max-lg:w-[70px] max-lg:h-[70px]"
+                    className="max-2xl:w-[60px] max-2xl:h-[60px]"
                     src={group11}
                     alt="single-human"
                   />
@@ -174,7 +172,7 @@ function Transection() {
                     <h5 className="text-sm font-normal text-gray-500">
                       Failed Transaction
                     </h5>
-                    <h1 className="font-semibold text-3xl my-1">
+                    <h1 className="font-semibold 2xl:text-3xl text-2xl my-1">
                       {failedTransaction}
                     </h1>
                     <span className="text-xs font-medium">
@@ -188,7 +186,7 @@ function Transection() {
                 </div>
                 <div className=" flex gap-5 items-center mx-2  md:justify-end  max-md:my-5">
                   <img
-                    className="max-lg:w-[70px] max-lg:h-[70px]"
+                    className="max-2xl:w-[60px] max-2xl:h-[60px]"
                     src={group12}
                     alt="pc"
                   />
@@ -196,7 +194,7 @@ function Transection() {
                     <h5 className="text-sm font-normal text-gray-500">
                       Total revenue
                     </h5>
-                    <h1 className="font-semibold text-3xl my-1">
+                    <h1 className="font-semibold 2xl:text-3xl text-2xl my-1">
                       {totalRevenue}
                     </h1>
                   </div>
@@ -205,10 +203,12 @@ function Transection() {
             </div>
 
             {/* section-3 */}
-            <div className="border mt-10 rounded-[30px] px-10 py-8  bg-white">
+            <div className="border 2xl:mt-10 mt-7 2xl:rounded-[30px] rounded-[20px] px-10 py-8  bg-white shadow-sm">
               <div className="mx-2 my-2 flex max-md:flex-wrap justify-between items-center">
                 <div className="mb-3">
-                  <h1 className="font-semibold text-2xl">All Customers</h1>
+                  <h1 className="font-semibold 2xl:text-2xl text-xl">
+                    All Customers
+                  </h1>
                 </div>
                 <div className="flex max-md:flex-wrap gap-3">
                   <form action="" onSubmit={handleSubmit}>
@@ -217,19 +217,19 @@ function Transection() {
                       type="text"
                       name="inputdata"
                       value={inputdata}
-                      className="bg-[#F9FBFF] sm:px-5 max-sm:w-[68%] pl-3 py-2 border border-gray-300  outline-none focus:ring-2 focus:ring-[#069ea1] rounded-lg text-xs max-md:my-1"
+                      className="bg-[#F9FBFF] sm:px-5 max-sm:w-[68%] pl-3 2xl:py-2 py-[0.40rem] border border-gray-300  outline-none focus:ring-2 focus:ring-[#069ea1] rounded-lg text-xs max-md:my-1"
                       placeholder="Search"
                     />
                     <button
                       type="submit"
-                      className="mr-1 ml-3  cursor-pointer bg-[#069ea1] hover:bg-[#088ea1] text-white py-[0.4rem] text-sm rounded-lg px-3"
+                      className="mr-1 ml-3  cursor-pointer bg-[#069ea1] hover:bg-[#088ea1] text-white py-[0.4rem] 2xl:text-sm text-xs rounded-lg px-3"
                     >
                       Search
                     </button>
                   </form>
                   <i
                     onClick={handleRefresh}
-                    className="fa-solid fa-arrows-rotate ml-2 cursor-pointer border border-gray-300 px-2 py-[0.45rem] rounded-md bg-[#F9FBFF]"
+                    className="fa-solid fa-arrows-rotate ml-2 cursor-pointer border border-gray-300 px-2 2xl:py-[0.45rem] py-[0.36rem] rounded-md bg-[#F9FBFF]"
                   ></i>
                 </div>
               </div>
@@ -303,7 +303,7 @@ function Transection() {
                 <button
                   disabled={currentpage === 1}
                   onClick={prevPage}
-                  className="px-4 py-[0.4rem] bg-[#069ea1] text-white rounded-lg mr-2 cursor-pointer text-base m-3  hover:text-white"
+                  className="px-4 py-[0.4rem] bg-[#069ea1] text-white rounded-lg mr-2 cursor-pointer 2xl:text-base text-xs m-3  hover:text-white"
                 >
                   Prev
                 </button>
@@ -326,7 +326,7 @@ function Transection() {
                 </div>
                 <button
                   onClick={nextPage}
-                  className="px-4 py-[0.4rem] bg-[#069ea1] text-white rounded-lg mr-2 cursor-pointer text-base m-3  hover:text-white"
+                  className="px-4 py-[0.4rem] bg-[#069ea1] text-white rounded-lg mr-2 cursor-pointer 2xl:text-base text-xs m-3  hover:text-white"
                 >
                   Next
                 </button>

@@ -30,16 +30,16 @@ function Login() {
           <img src={logo} alt="Logo" />
         </div>
         <div className="border border-[#08A19E] bg-white m-2 max-sm:mt-10 rounded-xl p-5 shadow-2xl ">
-          <h1 className="text-[#08A19E] font-medium sm:text-3xl text-2xl  text-center mb-2 sm:px-10 pt-5">
+          <h1 className="text-[#08A19E] font-medium 2xl:text-3xl text-2xl  text-center mb-2 sm:px-10 pt-5">
             Login to your account
           </h1>
-          <p className="mb-10 text-center">
+          <p className="2xl:mb-10 mb-7 text-center">
             Welcome back! Please enter your details.
           </p>
           <form
             onSubmit={HandleSubmit}
             
-            className="space-y-4 sm:mb-8 mb-"
+            className="space-y-4 sm:mb-6 mb-"
           >
             <div className="flex flex-col mb-5">
               <label htmlFor="email" className="pb-1">
@@ -51,7 +51,7 @@ function Login() {
                 onChange={(e) => setEmail(e.target.value)}
                 required={true}
                 placeholder="Enter Your email"
-                className="border border-gray-300 p-2 rounded"
+                className="border border-gray-300 2xl:p-2 p-[0.30rem] rounded"
               />
             </div>
             <div className="flex flex-col">
@@ -64,13 +64,13 @@ function Login() {
                 onChange={(e) => setPassword(e.target.value)}
                 required={true}
                 placeholder="Password"
-                className="border border-gray-300 p-2 mb-10 rounded"
+                className="border border-gray-300 2xl:p-2 p-[0.30rem] 2xl:mb-10 mb-7 rounded"
               />
             </div>
            
             <button
               type="submit"
-              className="bg-[#08A19E] w-full text-white p-2 rounded-lg "
+              className="bg-[#08A19E] w-full text-white 2xl:p-2 p-[0.40rem] rounded-lg "
             >
               Submit
             </button>

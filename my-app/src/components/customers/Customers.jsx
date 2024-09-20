@@ -49,12 +49,11 @@ function Customers() {
     setInputdata(e.target.value);
   };
 
-  const URL = "https://norta-dashboard.onrender.com";
   //fetch data
   useEffect(() => {
     const fetchPayments = async () => {
       try {
-        const response = await axios.get(`${URL}/api/payments`);
+        const response = await axios.get("http://localhost:5000/api/payments");
         setLodding(true);
         setTimeout(() => {
           setLodding(false);
@@ -163,6 +162,7 @@ function Customers() {
   const handleTicketStatusClick = (payment) => {
     setSelectedPayment(payment);
   };
+
   const handleSaveStatus = (newStatus) => {
     const updatedPayments = payments.map((payment) =>
       payment.id === selectedPayment.id
@@ -185,16 +185,16 @@ function Customers() {
         {sidebarToggle ? <div className="w-[320px] nirav"></div> : null}
         <Sidebar toggleClick={toggleClick} sidebarToggle={sidebarToggle} />
         <div className="w-[100%] ">
-          <div className=" lg:w-[90%] w-[99%]  m-auto mt-5 xl:p-2 lg:p-10  p-2">
+          <div className=" 2xl:w-[90%] w-[95%] m-auto 2xl:mt-16 mt-10  xl:p-2 lg:p-10  p-2">
             <div className="sm:flex sm:justify-between sm:items-center">
-              <h1 className="font-medium text-2xl">Hello SMJ 👋🏼</h1>
-              <div className="bg-white flex items-center gap-2 py-1 px-2 border rounded-xl max-sm:mt-3">
+              <h1 className="font-medium 2xl:text-2xl text-xl">Hello SMJ 👋🏼</h1>
+              <div className="bg-white flex items-center gap-2 2xl:py-1 py-[0.18rem] 2xl:px-2 px-1 border rounded-xl  max-sm:mt-3">
                 <i
                   className="fa-solid fa-magnifying-glass text-gray-400"
                   aria-hidden="true"
                 ></i>
                 <input
-                  className="py-1 px-2 border-none outline-none focus:ring-2 focus:ring-[#069ea1] rounded-md"
+                  className="2xl:py-1 py-[0.18rem] px-2 border-none outline-none focus:ring-2 focus:ring-[#069ea1] rounded-md"
                   type="text"
                   placeholder="Search"
                   aria-label="Search"
@@ -203,11 +203,11 @@ function Customers() {
             </div>
 
             {/* section-2 */}
-            <div className="border mt-5 rounded-[30px] xl:px-14 px-1 py-8 bg-white shadow-sm">
+            <div className="border 2xl:mt-10 mt-7 2xl:rounded-[30px] rounded-[20px] px-14 py-8  bg-white shadow-sm">
               <div className="grid md:grid-cols-3">
                 <div className="flex gap-5 mx-2 md:items-center max-md:my-5">
                   <img
-                    className="max-xl:w-[60px] max-lg:h-[60px]"
+                    className="max-2xl:w-[60px] max-2xl:h-[60px]"
                     src={group10}
                     alt="double human"
                   />
@@ -215,7 +215,7 @@ function Customers() {
                     <h5 className="text-sm font-normal text-gray-500">
                       Total Customers
                     </h5>
-                    <h1 className="font-semibold xl:text-3xl text-xl my-1">
+                    <h1 className="font-semibold 2xl:text-3xl text-2xl my-1">
                       {totleCustomers}
                     </h1>
                     <span className="text-xs font-medium">
@@ -229,7 +229,7 @@ function Customers() {
                 </div>
                 <div className="flex gap-5 md:justify-center mx-2 md:border-l-2 md:border-r-2 items-center max-md:my-5">
                   <img
-                    className="max-xl:w-[60px] max-lg:h-[60px]"
+                    className="max-2xl:w-[60px] max-2xl:h-[60px]"
                     src={group11}
                     alt="sigle human"
                   />
@@ -237,7 +237,7 @@ function Customers() {
                     <h5 className="text-sm font-normal text-gray-500">
                       Members
                     </h5>
-                    <h1 className="font-semibold xl:text-3xl text-xl my-1">
+                    <h1 className="font-semibold 2xl:text-3xl text-2xl my-1">
                       1,893
                     </h1>
                     <span className="text-xs font-medium">
@@ -248,7 +248,7 @@ function Customers() {
                 </div>
                 <div className="flex gap-5 items-center mx-2 md:justify-end max-md:my-5">
                   <img
-                    className="max-xl:w-[60px] max-lg:h-[60px]"
+                    className="max-2xl:w-[60px] max-2xl:h-[60px]"
                     src={group12}
                     alt="computer"
                   />
@@ -256,7 +256,7 @@ function Customers() {
                     <h5 className="text-sm font-normal text-gray-500">
                       No of ticket sold
                     </h5>
-                    <h1 className="font-semibold xl:text-3xl text-xl my-1">
+                    <h1 className="font-semibold 2xl:text-3xl text-2xl my-1">
                       {totalTickets}
                     </h1>
                   </div>
@@ -265,11 +265,13 @@ function Customers() {
             </div>
 
             {/* section-3 */}
-            <div className="border mt-5  rounded-[30px] sm:px-10 px-5 sm:py-8 py-5 mb-10 bg-white shadow-sm">
+            <div className="border 2xl:mt-10 mt-7 2xl:rounded-[30px] rounded-[20px] px-10 py-8  bg-white shadow-sm">
               <div className="mx-2 my-2 flex flex-wrap justify-between items-center">
                 <div className="mb-3">
-                  <h1 className="font-semibold text-2xl">All Customers</h1>
-                  <h6 className="text-[#16C098] font-normal mt-1">
+                  <h1 className="font-semibold 2xl:text-2xl text-xl">
+                    All Customers
+                  </h1>
+                  <h6 className="text-[#16C098] font-normal mt-1 max-2xl:text-sm">
                     Active Customers
                   </h6>
                 </div>
@@ -285,20 +287,20 @@ function Customers() {
                       type="text"
                       name="inputdata"
                       value={inputdata}
-                      className="bg-[#F9FBFF]  sm:px-5 max-sm:w-[68%] pl-3 py-2 border border-gray-300  outline-none focus:ring-2 focus:ring-[#069ea1] rounded-lg text-xs max-md:my-1"
+                      className="bg-[#F9FBFF]  sm:px-5 max-sm:w-[68%] pl-3 2xl:py-2 py-[0.40rem] border border-gray-300  outline-none focus:ring-2 focus:ring-[#069ea1] rounded-lg text-xs max-md:my-1"
                       placeholder="Search"
                     />
                     <button
                       type="submit"
-                      className="mr-1 ml-3   cursor-pointer bg-[#069ea1] hover:bg-[#088ea1] text-white py-[0.4rem] text-sm rounded-lg px-3"
+                      className="mr-1 ml-3   cursor-pointer bg-[#069ea1] hover:bg-[#088ea1] text-white py-[0.4rem] 2xl:text-sm text-xs rounded-lg 2xl:px-3 px-2"
                     >
                       Search
                     </button>
                   </form>
                   {/* filter table data by ticketname */}
                   <div className="flex justify-between items-center flex-wrap">
-                    <div className="text-xs bg-[#F9FBFF] px-5 py-[0.38rem] border border-gray-300  rounded-lg max-md:my-1 mr-1 font-semibold">
-                      <span className="text-sm">Ticket name: </span>
+                    <div className="text-xs bg-[#F9FBFF] 2xl:px-5 px-3 py-[0.40rem] border border-gray-300  rounded-lg max-md:my-1 mr-1 font-semibold">
+                      <span className="2xl:text-sm text-xs">Ticket name: </span>
                       <select
                         value={ticketType}
                         onChange={(e) => handleTicketTypeChange(e.target.value)}
@@ -340,14 +342,14 @@ function Customers() {
                       headers={headers}
                       filename="Norta-Dashboard_data.csv"
                     >
-                      <button className="bg-[#069ea1] px-3 py-[0.38rem] text-white text-sm rounded-lg flex justify-center items-center gap-1">
+                      <button className="bg-[#069ea1] 2xl:px-3 px-2 py-[0.38rem] text-white 2xl:text-sm text-xs rounded-lg flex justify-center items-center gap-1">
                         Export <TbFileExport />
                       </button>
                     </CSVLink>
 
                     <i
                       onClick={handleRefresh}
-                      className="fa-solid fa-arrows-rotate ml-2 cursor-pointer border border-gray-300 px-2 py-[0.45rem] rounded-md bg-[#F9FBFF]"
+                      className="fa-solid fa-arrows-rotate ml-2 cursor-pointer border border-gray-300 px-2 2xl:py-[0.45rem] py-[0.40rem] rounded-md bg-[#F9FBFF]"
                     ></i>
                   </div>
                 </div>
@@ -517,7 +519,7 @@ function Customers() {
                 <button
                   onClick={prevPage}
                   disabled={currentPage === 1}
-                  className="px-4 py-[0.4rem] bg-[#069ea1] text-white rounded-lg mr-2 cursor-pointer text-base m-3  hover:text-white"
+                  className="px-4 py-[0.4rem] bg-[#069ea1] text-white rounded-lg mr-2 cursor-pointer 2xl:text-base text-xs m-3  hover:text-white"
                 >
                   Prev
                 </button>
@@ -539,7 +541,7 @@ function Customers() {
                 <button
                   onClick={nextPage}
                   disabled={currentPage === npage}
-                  className="px-4 py-[0.4rem] bg-[#069ea1] text-white rounded-lg mr-2 cursor-pointer text-base m-3  hover:text-white"
+                  className="px-4 py-[0.4rem] bg-[#069ea1] text-white rounded-lg mr-2 cursor-pointer 2xl:text-base text-xs m-3  hover:text-white"
                 >
                   Next
                 </button>

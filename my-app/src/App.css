@@ -83,7 +83,6 @@ label #cancel {
   background: linear-gradient(90deg, #069ea1 12%, #56748e 34%, #ea1d82 81%);
 }
 
-
 @media (max-width: 1024px) {
   .nirav {
     width: 0;
@@ -93,9 +92,30 @@ label #cancel {
   z-index: 100;
 }
 
-
 @media (max-width: 1100px) {
   .filterinput {
     margin-bottom: 5px;
+  }
+}
+
+@media (max-width: 1535px) {
+  #check:checked ~ label #btn {
+    margin-left: 250px;
+    opacity: 0;
+    visibility: hidden;
+  }
+  #check:checked ~ label #cancel {
+    margin-left: 250px;
+    opacity: 1;
+    visibility: visible;
+  }
+
+  th,
+  td {
+    height: 40px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+    font-size: 12px;
+    padding: 2px 15px;
   }
 }

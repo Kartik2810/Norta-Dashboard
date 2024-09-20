@@ -28,45 +28,45 @@ function Sidebar({ toggleClick, sidebarToggle }) {
         <i className="fas fa-bars" id="btn"></i>
         <i className="fas fa-times" id="cancel"></i>
       </label>
-      <div className="sidebar font-[Poppins] flex flex-col justify-between fixed w-[300px]  h-screen left-[-300px] border bg-[white] shadow-sm ">
+      <div className="sidebar font-[Poppins] flex flex-col justify-between fixed 2xl:w-[300px] w-[250px]   h-screen 2xl:left-[-300px] left-[-250px]  border bg-[white] shadow-sm ">
         <div className=" p-5 pl-5">
-          <img className="w-24" src={logo} alt="" />
+          <img className="2xl:w-24 w-20" src={logo} alt="" />
 
           <NavLink
             to="/dashboard"
             className="flex gap-3 items-center text-[#9197B3] mt-5  py-2 pl-2 rounded-lg  "
           >
-            <MdDashboardCustomize className="text-xl" />
-            <span>Dashboard</span>
+            <MdDashboardCustomize className="2xl:text-xl text-base" />
+            <span className="max-2xl:text-sm">Dashboard</span>
           </NavLink>
 
           <NavLink
             to="/customers"
             className="flex gap-3 items-center text-[#9197B3] mt-5  py-2 pl-2 rounded-lg"
           >
-            <FaRegUserCircle className="text-xl" />
-            <span>Customers</span>
+            <FaRegUserCircle className="2xl:text-xl text-base" />
+            <span className="max-2xl:text-sm">Customers</span>
           </NavLink>
 
           <NavLink
             to="/transection"
             className="flex gap-2 items-center text-[#9197B3] mt-5  py-2 pl-2 rounded-lg"
           >
-            <RiMoneyDollarCircleLine className="text-xl" />
-            <span>Transections</span>
+            <RiMoneyDollarCircleLine className="2xl:text-xl text-base" />
+            <span className="max-2xl:text-sm">Transections</span>
           </NavLink>
 
           <NavLink
             to="/help"
             className="flex gap-3 items-center text-[#9197B3] mt-5  py-2 pl-2 rounded-lg"
           >
-            <LuHelpCircle className="text-xl" />
-            <span>Help</span>
+            <LuHelpCircle className="2xl:text-xl text-base" />
+            <span className="max-2xl:text-sm">Help</span>
           </NavLink>
         </div>
 
         <div className="mb-10  mx-5">
-          <div className="sidebar_small_con border rounded-2xl text-center p-2 pt-6 text-sm font-semibold">
+          <div className="sidebar_small_con border rounded-2xl text-center p-2 pt-6 2xl:text-sm text-xs font-semibold">
             <p className="text-white px-6">
               Let’s make the Navtari event memorable
             </p>
@@ -75,10 +75,10 @@ function Sidebar({ toggleClick, sidebarToggle }) {
             </button>
           </div>
 
-          <div className="text-left pt-5">
+          <div className="text-left pt-5 max-2xl:text-sm">
             <button
               onClick={LogoutHndler}
-              className="bg-[#069ea1] px-5 py-2 rounded-lg text-white"
+              className="bg-[#069ea1] 2xl:px-5 px-3 2xl:py-2 py-[0.40rem] rounded-lg text-white"
             >
               Logout <i className="fa-solid fa-right-from-bracket ml-1"></i>
             </button>
