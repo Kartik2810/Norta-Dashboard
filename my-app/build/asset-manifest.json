@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/static/css/main.79e36abf.css",
-    "main.js": "/static/js/main.9b6301c7.js",
+    "main.js": "/static/js/main.452f99e2.js",
     "static/media/Norta 2024 _ Logo 1.png": "/static/media/Norta 2024 _ Logo 1.0d6273d793b55297f0a4.png",
     "index.html": "/index.html",
     "main.79e36abf.css.map": "/static/css/main.79e36abf.css.map",
-    "main.9b6301c7.js.map": "/static/js/main.9b6301c7.js.map"
+    "main.452f99e2.js.map": "/static/js/main.452f99e2.js.map"
   },
   "entrypoints": [
     "static/css/main.79e36abf.css",
-    "static/js/main.9b6301c7.js"
+    "static/js/main.452f99e2.js"
   ]
 }
