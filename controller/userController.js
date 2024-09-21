@@ -9,14 +9,15 @@ const PASSWORD = process.env.PASSWORD;
 const Loginuser = async (req, res) => {
   try {
     const { email, password } = req.body;
+
     if (email !== EMAIL || password !== PASSWORD) {
-      return res
-        .status(400)
-        .send({ message: "Please provide email and password" });
+      return res.status(400).send({ message: "Invalid email or password" });
     }
-    const Hassdpass = await HassPassword(password);
-    const user = new User({ email, password: Hassdpass });
+
+    const hashedPass = await HassPassword(password);
+    const user = new User({ email, password: hashedPass });
     await user.save();
+
     res.status(200).send({
       message: "Login successful",
       user: user,
