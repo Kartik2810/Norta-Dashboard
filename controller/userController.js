@@ -9,7 +9,7 @@ const PASSWORD = process.env.PASSWORD;
 const Loginuser = async (req, res) => {
   try {
     const { email, password } = req.body;
-    if (email !== EMAIL && password !== PASSWORD) {
+    if (email !== EMAIL || password !== PASSWORD) {
       return res
         .status(400)
         .send({ message: "Please provide email and password" });
