@@ -10,7 +10,6 @@ import SyncLoader from "react-spinners/SyncLoader";
 import PopUP from "./../Popup/PopUP";
 function Customers() {
   //state
-
   const [sidebarToggle, setSidebarToggle] = useState(true);
   const [payments, setPayments] = useState([]);
   const [filteredPayments, setFilteredPayments] = useState([]);
@@ -22,7 +21,6 @@ function Customers() {
   const [lodding, setLodding] = useState(false);
   const [selectedPayment, setSelectedPayment] = useState(null);
 
-  console.log(filteredPayments);
   // for download exel file
   const headers = [
     { label: "Customer name", key: "notes.name" },
@@ -176,7 +174,6 @@ function Customers() {
     setFilteredPayments(updatedPayments);
 
     localStorage.setItem("payments", JSON.stringify(updatedPayments));
-
     setSelectedPayment(null);
   };
 
@@ -422,7 +419,6 @@ function Customers() {
                               <td>{serialNumber}</td>
                               <td>{tdata.notes.name}</td>
                               <td>{tdata.notes.phone}</td>
-                              {/* <td>{tdata.notes.email}</td> */}
                               <td>{tdata.notes.date}</td>
                               <td>{tdata.notes.confirm_no_of_ticket}</td>
                               <td>₹ {(totalQut / 100).toFixed(2)}</td>
