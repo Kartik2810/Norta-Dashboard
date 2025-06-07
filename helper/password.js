@@ -6,7 +6,7 @@ const HassPassword = async (password) => {
     const hashpass = await bcrypt.hash(password, salt);
     return hashpass;
   } catch (error) {
-    console.log(`error in hashpssword function ${error}`);
+     return null;
   }
 };
 module.exports = HassPassword;
