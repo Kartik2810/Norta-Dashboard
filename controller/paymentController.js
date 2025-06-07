@@ -27,10 +27,8 @@ const PaymentData = async (req, res) => {
         console.error("Error saving payment:", err);
       }
     }
-
-    res.json(response.data);
+    res.status(200).json(response.data);
   } catch (error) {
-    console.error("Error fetching payments:", error);
     res.status(500).json({ error: error.message });
   }
 };
