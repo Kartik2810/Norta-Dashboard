@@ -19,7 +19,6 @@ function Login() {
       
     } catch (error) {
       toast.error("Invalid email or password");
-      console.log(`error in handleSubmit ${error}`);
     }
   };
 
