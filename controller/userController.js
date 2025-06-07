@@ -23,7 +23,6 @@ const Loginuser = async (req, res) => {
       user: user,
     });
   } catch (error) {
-    console.error(`Error in loginController: ${error}`);
     res.status(500).send({ message: "An error occurred during login" });
   }
 };
